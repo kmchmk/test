@@ -10,6 +10,8 @@ jobs:
       - run: python --version
       - run: pip --version
       - run: pip list
-      - name: Run test.py
-        run: python ${{ github.workspace }}/test.py
+      - name: Pip install
+        run: pip install pystray requests pyinstaller
+      - name: Build
+        run: pyinstaller --noconsole --onefile 'test.py'
       - run: echo "This job's status is ${{ job.status }}."
