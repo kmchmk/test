@@ -1,0 +1,17 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: windows-latest
+    steps:
+      - run: echo "The job was triggered by a '${{ github.event_name }}' event on a '${{ runner.os }}' server hosted by GitHub!"
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: python --version
+      - run: pip --version
+      - run: pip list
+      - name: Pip install
+        run: pip install pystray requests pyinstaller
+      - name: Build
+        run: pyinstaller --noconsole --onefile 'test.py'
+      - run: echo "This job's status is ${{ job.status }}."
