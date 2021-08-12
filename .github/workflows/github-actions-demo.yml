@@ -8,7 +8,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: python --version
+      - run: pip --version
+      - run: pip list
       - name: Run test.py
-        run: |
-          python ${{ github.workspace }}/test.py
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+        run: python ${{ github.workspace }}/test.py
+      - run: echo "This job's status is ${{ job.status }}."
